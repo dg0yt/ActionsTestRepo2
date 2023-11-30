@@ -11,13 +11,13 @@
         },
         {
             "name": "sdl2",
-            "features": [ "x11", "wayland" ],
+            "features": [ "base" ],
+            "default-features": false,
             "platform": "linux"
         },
         {
-            "name": "sdl2",
-            "platform": "!linux"
+            "name": "sdl2-image",
+            "default-features": false,
         },
-        "sdl2-image"
     ]
 }
