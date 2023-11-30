@@ -12,12 +12,11 @@
         {
             "name": "sdl2",
             "features": [ "base" ],
-            "default-features": false,
-            "platform": "linux"
+            "default-features": false
         },
         {
             "name": "sdl2-image",
-            "default-features": false,
-        },
+            "default-features": false
+        }
     ]
 }
