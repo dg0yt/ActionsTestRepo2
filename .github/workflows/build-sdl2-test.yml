@@ -32,7 +32,10 @@ jobs:
         if [ "$RUNNER_OS" == "Linux" ]; then
           echo "VCPKG_COPY_TRIPLET=x64-linux" >> $GITHUB_ENV
           echo "VCPKG_DEFAULT_TRIPLET=x64-linux-release-only" >> $GITHUB_ENV
-          sudo apt install -y pkg-config
+          sudo apt install -y pkg-config autoconf
+        elif [ "$RUNNER_OS" == "macOS" ]; then
+          echo "VCPKG_COPY_TRIPLET=x64-osx" >> $GITHUB_ENV
+          echo "VCPKG_DEFAULT_TRIPLET=x64-osx-release-only" >> $GITHUB_ENV
         else
           echo "$RUNNER_OS is not supported."
           exit 1
