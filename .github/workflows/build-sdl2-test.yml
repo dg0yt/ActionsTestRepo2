@@ -57,6 +57,12 @@ jobs:
       run: |
         cmake -B "${{github.workspace}}/build" -DCMAKE_TOOLCHAIN_FILE="${{env.VCPKG_ROOT}}/scripts/buildsystems/vcpkg.cmake" -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DVCPKG_TARGET_TRIPLET=${{env.VCPKG_DEFAULT_TRIPLET}}
 
+    - name: Output
+      if: always()
+      shell: bash
+      run: |
+        cat "${{env.VCPKG_ROOT}}/buildtrees/python3/autoconf-x64-linux-err.log"
+
     - name: Build
       shell: bash
       run: |
