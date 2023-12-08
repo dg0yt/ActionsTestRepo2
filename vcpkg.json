@@ -11,12 +11,14 @@
         },
         {
             "name": "sdl2",
-            "features": [ "base" ],
-            "default-features": false
+            "features": [ "vulkan", "x11", "wayland" ],
+            "platform": "linux"
         },
         {
-            "name": "sdl2-image",
-            "default-features": false
-        }
+            "name": "sdl2",
+            "features": [ "vulkan" ],
+            "platform": "!linux"
+        },
+        "sdl2-image"
     ]
 }
