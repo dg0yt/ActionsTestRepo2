@@ -32,10 +32,11 @@ jobs:
         if [ "$RUNNER_OS" == "Linux" ]; then
           echo "VCPKG_COPY_TRIPLET=x64-linux" >> $GITHUB_ENV
           echo "VCPKG_DEFAULT_TRIPLET=x64-linux-release-only" >> $GITHUB_ENV
-          sudo apt install -y pkg-config autoconf
+          sudo apt install -y autoconf-archive
         elif [ "$RUNNER_OS" == "macOS" ]; then
           echo "VCPKG_COPY_TRIPLET=x64-osx" >> $GITHUB_ENV
           echo "VCPKG_DEFAULT_TRIPLET=x64-osx-release-only" >> $GITHUB_ENV
+          brew install autoconf-archive
         else
           echo "$RUNNER_OS is not supported."
           exit 1
@@ -68,7 +69,7 @@ jobs:
         if [ "$RUNNER_OS" == "Linux" ]; then
           cat "${{env.VCPKG_ROOT}}/buildtrees/python3/autoconf-x64-linux-err.log"
         else
-          cat "${{env.VCPKG_ROOT}}/buildtrees/python3/autoconf-x64-macos-err.log"
+          cat "${{env.VCPKG_ROOT}}/buildtrees/python3/autoconf-x64-osx-err.log"
         fi
 
     - name: Build
