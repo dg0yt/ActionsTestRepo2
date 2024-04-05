@@ -3,6 +3,10 @@
     "name": "actions-test",
     "version": "0.1.0",
     "dependencies": [
-        "python3"
+        {
+            "name": "libarchive",
+            "default-features": true,
+            "features": [ "bzip2", "lz4", "lzma", "zstd" ]
+        }
     ]
 }
