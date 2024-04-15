@@ -61,7 +61,7 @@ jobs:
       shell: bash
       run: |
         cp "${{env.VCPKG_ROOT}}/triplets/${{env.VCPKG_COPY_TRIPLET}}.cmake" "${{env.VCPKG_ROOT}}/triplets/community/${{env.VCPKG_DEFAULT_TRIPLET}}.cmake"
-        echo "set(VCPKG_BUILD_TYPE release)" >> "${{env.VCPKG_ROOT}}/triplets/community/${{env.VCPKG_DEFAULT_TRIPLET}}.cmake"
+        #echo "set(VCPKG_BUILD_TYPE release)" >> "${{env.VCPKG_ROOT}}/triplets/community/${{env.VCPKG_DEFAULT_TRIPLET}}.cmake"
         sed -i -e 's/.*VCPKG_LIBRARY_LINKAGE.*/set(VCPKG_LIBRARY_LINKAGE ${{matrix.linking}})/g' "${{env.VCPKG_ROOT}}/triplets/community/${{env.VCPKG_DEFAULT_TRIPLET}}.cmake"
         if [ "$RUNNER_OS" == "Linux" ] && [ "${{matrix.linking}}" == "dynamic" ]; then
             echo "set(VCPKG_FIXUP_ELF_RPATH ON)" >> "${{env.VCPKG_ROOT}}/triplets/community/${{env.VCPKG_DEFAULT_TRIPLET}}.cmake"
@@ -71,3 +71,5 @@ jobs:
       shell: bash
       run: |
         cmake -B "${{github.workspace}}/build" -DCMAKE_TOOLCHAIN_FILE="${{env.VCPKG_ROOT}}/scripts/buildsystems/vcpkg.cmake" -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DVCPKG_TARGET_TRIPLET=${{env.VCPKG_DEFAULT_TRIPLET}}
+        cat ${{env.VCPKG_ROOT}}/buildtrees/openssl/install-x64-linux-static-release-only-rel-out.log
+        false
